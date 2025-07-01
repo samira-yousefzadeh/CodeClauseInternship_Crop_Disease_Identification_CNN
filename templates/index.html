@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crop Disease Detector</title>
+  <style>
+    body { font-family: Arial; padding: 40px; background-color: #f2f2f2; }
+    form { background: white; padding: 20px; border-radius: 8px; width: 350px; }
+    input[type=file], input[type=submit] { margin-top: 10px; width: 100%; padding: 10px; }
+    img { margin-top: 20px; width: 224px; height: 224px; }
+  </style>
+</head>
+<body>
+  <h2>🌿 Upload a Crop Image</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" required>
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if prediction %}
+    <h3>Prediction: {{ prediction }}</h3>
+    <img src="{{ url_for('static', filename='uploads/' + image_file) }}">
+  {% endif %}
+</body>
+</html>
